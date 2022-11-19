@@ -7,10 +7,12 @@ __pycache__/
 
 # C extensions
 *.so
+.idea
 
 # Distribution / packaging
 .Python
 env/
+ambvir/
 build/
 develop-eggs/
 dist/
