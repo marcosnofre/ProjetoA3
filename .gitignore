@@ -61,10 +61,6 @@ local_settings.py
 instance/
 .webassets-cache
 
-# file: ~/.gitignore_global
-.DS_Store
-.idea
-
 # Scrapy stuff:
 .scrapy
 
