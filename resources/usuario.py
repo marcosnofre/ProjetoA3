@@ -1,6 +1,8 @@
 from flask_restful import Resource, reqparse
+
+from blocklist import BLOCKLIST
 from models.usuario import UserModel
-from flask_jwt_extended import create_access_token, jwt_required
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt
 
 import hmac
 
@@ -17,6 +19,7 @@ class User(Resource):
             return user.json()
         return {'message': 'Usuario nao encontrado.'}, 404
 
+    @jwt_required()
     def delete(self, user_id):
         user = UserModel.find_user(user_id)
         if user:
@@ -54,3 +57,12 @@ class UserLogin(Resource):
             token_de_acesso = create_access_token(identity=user.user_id)
             return {'access_token': token_de_acesso}, 200
         return {'message': 'O usuario ou senha invalidos.'}, 401
+
+
+class UserLogout(Resource):
+    # /logout
+    @jwt_required()
+    def post(self):
+        jwt_id = get_jwt()['jti']  # JWT identificador do token
+        BLOCKLIST.add(jwt_id)
+        return {'message': 'Deslogado com sucesso!'}, 200
