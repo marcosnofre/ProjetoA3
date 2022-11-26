@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 :host{
   display: flex;
   flex-direction: column;
@@ -8,22 +9,38 @@
   position: absolute;
   left: 0;
   top: 0;
-  background: linear-gradient(to right, #333333, #1e8496);
+  background-color: #9b917c;
   padding: 0;
-  font-family: 'montserrat';
+  font-family: 'Patrick Hand', cursive;
 
   h3{
     color: rgb(253, 253, 253);
   }
 
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin: 0;
+    padding: 0;
+    table-layout: fixed;
+    background-color: #9b917c;
+    color: #141414;
+    font-size: 0.9em;
+    text-align: center;
+    font-family: 'montserrat';
+  }
+
   button{
-    min-width: 300px;
-    padding: 13px 22px;
+    min-width: 10px;
+    padding: 10px 10px;
     border-radius: 8px;
     border: none;
-    background-color: #141414;
-    color: #1e8496;
+    background-color: #687572;
+    color: #9b917c;
     cursor: pointer;
-    margin-top: 22px;
+    margin-top: 5px;
+    margin-left: 5px;
   }
+
 }

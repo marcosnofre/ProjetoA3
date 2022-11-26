@@ -11,31 +11,37 @@ import {InterfaceHotel} from "./InterfaceHoteis";
 export class AppComponent {
   title = 'ApiRequest';
 
-  constructor(private hotelService: HotelService) {}
+  hoteis: any = [];
+
+  constructor(public hotelService: HotelService) {}
 
   obterTodosHoteis(){
     this.hotelService.obterTodosHoteis()
-      .then(hoteis => console.log(hoteis))
-      .catch(erro => console.log(erro));
+      .subscribe(hoteis => {
+        this.hoteis = hoteis;
+        this.hoteis = this.hoteis.hoteis;
+        console.log(hoteis)
+      });
   }
 
   obterHotelPorId(id: number){
     this.hotelService.obterHotelPorId(id)
-      .then(hotel => console.log(hotel))
-      .catch(erro => console.log(erro));
+      .subscribe(hoteis => {
+        this.hoteis = hoteis;
+        this.hoteis = this.hoteis.hoteis;
+        console.log(hoteis)});
   }
 
   adicionarHotel(id: number){
     const hotel: InterfaceHotel = {
-      hotel_id: 4,
-      nome: "Hotel Serhs",
-      estrelas: 4.5,
-      diaria: 500,
-      cidade: "Natal"
+      hotel_id: 3,
+      nome: "Hotel Copacabana Palace",
+      estrelas: 4,
+      diaria: 100,
+      cidade: "Rio de Janeiro"
     };
     this.hotelService.adicionarHotel(hotel)
-      .then(hotel => console.log("Hotel adicionado com sucesso!", hotel))
-      .catch(erro => console.log(erro));
+      .subscribe(hotel => console.log("Hotel adicionado com sucesso!", hotel));
   }
 
   atualizarHotel(id: number){
@@ -47,14 +53,12 @@ export class AppComponent {
       cidade: "Rio de Janeiro"
     };
     this.hotelService.atualizarHotel(id, hotel)
-      .then(hotel => console.log("Hotel atualizado com sucesso!", hotel))
-      .catch(erro => console.log(erro));
+      .subscribe(hotel => console.log("Hotel atualizado com sucesso!", hotel));
 
   }
 
   deletarHotel(id: number){
     this.hotelService.deletarHotel(id)
-      .then(hotel => console.log("Hotel deletado com sucesso!", hotel))
-      .catch(erro => console.log(erro));
+      .subscribe(hotel => console.log("Hotel deletado com sucesso!", hotel));
   }
 }

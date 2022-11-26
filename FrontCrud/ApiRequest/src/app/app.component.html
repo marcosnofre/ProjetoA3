@@ -1,8 +1,34 @@
-<h3>Hoteis</h3>
+<h2>Hoteis</h2>
 
 <button (click)="obterTodosHoteis()">Buscar Todos</button>
-<button (click)="obterHotelPorId(2)">Buscar Por Id</button>
+<button (click)="obterHotelPorId(3)">Buscar Por Id</button>
 <button (click)="adicionarHotel(4)">Adicionar Hotel</button>
-<button (click)="atualizarHotel(2)">Atualizar Hotel</button>
-<button (click)="deletarHotel(4)">Deletar Hotel</button>
+<button (click)="atualizarHotel(3)">Atualizar Hotel</button>
+
+
+
+<h2>Lista de Hoteis</h2>
+<table>
+  <tr>
+    <th>hotel_id</th>
+    <th>Nome</th>
+    <th>Estrelas</th>
+    <th>Diaria</th>
+    <th>Cidade</th>
+  </tr>
+
+  <tr *ngFor="let hotel of hoteis">
+    <th>{{hotel.hotel_id}}</th>
+    <th>{{hotel.nome}}</th>
+    <th>{{hotel.estrelas}}</th>
+    <th>{{hotel.diaria}}</th>
+    <th>{{hotel.cidade}}</th>
+    <button (click)="deletarHotel(hotel.hotel_id)">Deletar</button>
+    <br>
+  </tr>
+
+
+</table>
+
+
 
