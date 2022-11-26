@@ -23,6 +23,7 @@ class Hotel(Resource):
             return hotel.json()
         return {'message': 'Hotel não encontrado.'}, 404
 
+    @jwt_required()
     def post(self, hotel_id):
         if HotelModel.find_hotel(hotel_id):
             return {'message': f'Hotel com id {hotel_id} já existe.'}, 400
@@ -35,6 +36,7 @@ class Hotel(Resource):
             return {'message': 'Ocorreu um erro interno ao salvar o hotel.'}, 500
         return hotel.json(), 201
 
+    @jwt_required()
     def put(self, hotel_id):
         dados = Hotel.argumentos.parse_args()
         hotel_encontrado = HotelModel.find_hotel(hotel_id)
@@ -49,6 +51,7 @@ class Hotel(Resource):
             return {'message': 'Ocorreu um erro interno ao salvar o hotel.'}, 500
         return hotel.json(), 201  # código de criação
 
+    @jwt_required()
     def delete(self, hotel_id):
         hotel = HotelModel.find_hotel(hotel_id)
         if hotel:
